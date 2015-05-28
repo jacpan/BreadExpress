@@ -1,0 +1,18 @@
+<fieldset><h5>Similar Items</h5>
+<div class="row">
+
+<% Item.for_category(@item.category).each do |item| %>
+  <div class="col s6">
+    <div class="card">
+      <div class="card-image">
+        <%= render partial: "item_image", locals: {item: item} %>
+      </div>
+      <div class="card-content">
+        <p><b>Name: <%= link_to item.name, item_path(item) %></b></p>
+        <p>Units: <%= item.units_per_item %> <% if item.category == "bread" %> loaf <% else %> <%= item.category %> <% end %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+</fieldset>

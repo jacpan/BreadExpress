@@ -1,0 +1,13 @@
+<div class = "container">
+<div class="row">
+  <div class="s7 col">
+    <%= render partial: "customer_details" %>
+  </div>
+  <div class="s5 col">
+    <%= render partial: "orders/previous_orders", locals: {previous_orders: @previous_orders}  unless @previous_orders.empty?%>
+  </div>
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+<%= render partial: "partials/object_options", locals: {model_name: "customer", object: @customer}  %>
+</div>

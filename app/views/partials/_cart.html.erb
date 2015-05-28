@@ -1,0 +1,27 @@
+<% if page == "checkout" %>
+	<div class="cart-summary">
+	<h3> Cart Summary </h3>
+<% else %>
+	<div class = "container">
+		<br/>
+	<div class="cart-header"><h3> Cart </h3> <% if !@order_items.size == 0%> <%= link_to "Empty cart", clear_items_in_cart_path %><% end %></div>
+<% end %>
+<% if @order_items.size == 0 %>
+	<p> There is nothing in your cart! </p>
+<% else %>
+	<%= render :partial => "partials/cart_details", locals: {page: "#{page}"}%>
+	<div align="right">
+		<p><b>Total Cost of Items:</b> <%= number_to_currency @item_total %></p>
+		<p><b>Estimated Shipping Costs:</b> <%= number_to_currency @shipping_cost %></p>
+		<h5><b>Total Cost:</b> <%=number_to_currency @total_cost%></h5>
+	</div>
+	<% if page == "cart" %>
+		<div align="center">
+			<%= link_to(checkout_path) do %>
+				<button class="waves-effect waves-teal btn">Checkout</button>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+<% end %>	
+</div>

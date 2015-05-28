@@ -1,0 +1,36 @@
+<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Item</th>
+	      <th>Price</th>
+	      <th>Quantity</th>
+	      <th>Subtotal</th>
+	      <th>&nbsp;&nbsp;</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @order_items.each do |oi| %>
+	      <tr>
+	        <td>
+				<h5><% if page == "checkout" %><%= oi.item.name %><% else %><%= link_to oi.item.name, item_path(oi.item) %><% end %></h5>
+	      	</td>
+	        <td>
+	          <%= number_to_currency oi.item.current_price %>
+	        </td>
+	        <td>
+	          <%=  oi.quantity %>
+	        </td>
+	        <td>
+	          <%= number_to_currency oi.subtotal %>
+	        </td>
+	        <td>
+	        	<% if page == "cart" %>
+	        		<%= link_to(remove_item_path(oi.item.id), class: 'button radius') do %>
+	        			<div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="Remove from cart"><i class="mdi-navigation-cancel"></i></div>
+	        		<% end %>
+	        	<% end %>
+	        </td>
+	      </tr>
+	    <% end %>
+	  </tbody>
+	</table>

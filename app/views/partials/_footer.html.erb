@@ -1,0 +1,18 @@
+
+<footer class="page-footer indigo darken-2">
+  <div class="container">
+    <div class="row" align= "center">
+
+	  <%= link_to 'Home', home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+      <%= link_to 'About Bread Express', about_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+	  <%= link_to 'Contact Us', contact_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
+	  <%= link_to 'Privacy Policy', privacy_path %>
+	  <br /><br />
+	
+	  <div id="copy">
+		Webmaster: <%= mail_to("jacquelp@andrew.cmu.edu", "Jacqueline Pan", encode: "javascript") %> 
+		&nbsp;&nbsp;&copy 2015
+	  </div>
+    </div>
+  </div>
+</footer>

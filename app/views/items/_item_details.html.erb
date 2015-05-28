@@ -1,0 +1,35 @@
+<div>
+<fieldset>
+<p>
+  <h4><%= @item.name %>
+  	<% if logged_in? && current_user.role?(:admin) %>
+  		<%= link_to(edit_item_path(@item), class: 'button radius') do %>
+  			<i class="mdi-content-create"></i> <% end %></h4>
+  	<% else %> 
+  			</h4><%= link_to(add_item_path(@item.id), class: 'button radius') do %>
+    			<i class="mdi-action-add-shopping-cart"></i>&nbsp;Add to Cart
+  			<% end %>
+  	<% end %> <br/><%= number_to_currency(@item.current_price) %>
+</p>
+
+<p>
+  <b>Item Description</b>: <%= @item.description %>
+</p>
+
+<p>
+  <b>Units per item</b>: <%= @item.units_per_item %>
+</p>
+
+<p>
+  <b>Total weight: <%= @item.weight %> lbs.</b>
+</p>
+<% if logged_in? && current_user.role?(:admin) %>
+<p>
+  <b>Active</b>: <%= @item.active ? 'Yes' : 'No' %>
+</p>
+<% end %>
+</fieldset>
+<fieldset>
+  <%= render partial: "item_image", locals: {item: @item} %>
+</fieldset>
+</div>

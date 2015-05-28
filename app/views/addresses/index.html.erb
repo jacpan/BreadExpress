@@ -1,0 +1,9 @@
+<% if current_user.role?(:customer) %>
+	<%= render partial: "customer_address" %>
+<% else %>
+	<%= render partial: "partials/admin_index_structure", locals: {model_name: "address", 
+                                                         primary: "active_addresses", 
+                                                         secondary: "inactive_addresses", 
+                                                         sidebar: nil} %>
+<% end %>
+

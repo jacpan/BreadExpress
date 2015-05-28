@@ -1,0 +1,7 @@
+<div class = "item-image">
+	<% if !item.picture_url.nil? %>
+		<p><%= image_tag item.picture_url, size: "150x180" %></p>
+	<% else %>
+		<img style: {width= 180px, height=150px}, src= "http://ozarktech.com/wp-content/uploads/2014/05/image-not-available-grid.jpg"></img>
+	<% end %>
+</div>

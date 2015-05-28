@@ -1,0 +1,11 @@
+<% if @pending_orders.empty? %>
+  <h5><em>No pending orders at this time.</em></h5>
+<% else %>
+  <%= render :partial => "order_list", locals: {status: 'Pending', orders: @pending_orders} %> 
+  <br />
+<% end %>
+
+&nbsp;
+<div class="center">
+	<a class="waves-effect waves-light btn" href="/orders/new" align="center">Add a New Order</a>
+</div>

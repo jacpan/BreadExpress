@@ -1,0 +1,23 @@
+  
+  <div class = "row">
+  	<% if logged_in? && (current_user.role?(:admin) || current_user.role?(:customer)) %>
+      <div class="col s6">
+    <% else %>
+      <div class="col s12">
+    <% end %>
+      </br>
+      <%= render :partial => "#{details}" %>
+      </div>
+    <div class="col s6">
+     <% unless sidebar.nil? %>
+      <%= render :partial => "#{sidebar}" %>
+     <% end %>
+    </div>
+  </div>
+
+<!-- Add buttons to list all, edit project or destroy project -->
+<% if !buttons.nil? %>
+	<%= render :partial => "#{buttons}" %>
+<% else %>
+  <a class="btn-floating btn-large waves-effect waves-light red" align = "center" href="/items">Back</a>
+<% end %>

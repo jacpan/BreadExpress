@@ -1,0 +1,13 @@
+<div class="container">
+  <h4>To be baked...</h4>
+  <% if @muffins.empty? && @bread.empty? && @pastries.empty? %>
+  	<p> There are no things to bake today! <i class="mdi-image-tag-faces"></i></p>
+  <% else %>
+  <%= render partial: "baking_items", locals: {items: @muffins, item_type: "muffins"} unless @muffins.empty? %>
+</br>
+  <%= render partial: "baking_items", locals: {items: @bread, item_type: "bread"} unless @bread.empty? %>
+</br>
+  <%= render partial: "baking_items", locals: {items: @pastries, item_type: "pastries"} unless @pastries.empty? %>
+  <% end %>
+  
+</div>

@@ -1,0 +1,64 @@
+<div class = "container">
+	<% if current_user.role?(:customer) %>
+	  <h5>
+        <%= link_to "Welcome, #{current_user.customer.first_name}", customer_path(current_user.customer) %>
+      </h5>
+      <p> Would you like to view our wonderful selection of <%= link_to "bread and other assortments of pastries", items_path %></p>
+      <br/>
+	<div class="row">
+		<%= link_to(cart_path, class: 'button radius') do %>
+ 			<div class="col s4 center">
+  			<img src ="http://blog.upshotcommerce.com/wp-content/uploads/2012/08/shopping_cart_2.png" class = "dashboard-icons">
+ 	   		<h4> My Cart </h4>
+			</div>
+ 		<% end %>
+
+		<%= link_to(orders_path, class: 'button radius') do %>
+  			<div class="col s4 center">
+  			<img src="http://media.onsugar.com/files/2011/03/10/6/1430/14305791/4c99ffbd11bc1452_bread_coloring_pages_for_kids.jpg" class = "dashboard-icons">
+    		<h4> My Orders </h4>
+  			</div>
+		<% end %>
+
+ 		<%= link_to(addresses_path, class: 'button radius') do %>
+  			<div class="col s4 center">
+  			<img src="http://images.clipartpanda.com/inside-house-clipart-black-and-white-simple-house-clipart-hgaohthe.png" class = "dashboard-icons" align="center">
+    		<h4> My Addresses </h4>
+  			</div>
+		<% end %>
+	</div>
+
+<% else %>
+	<h5>
+		<%= link_to "Welcome, #{current_user.username}", user_path(current_user) %>
+	</h5>
+    <br/>
+	<div class="row">
+		<%= link_to(items_path, class: 'button radius') do %>
+ 			<div class="col s4 center">
+  			<img src ="http://www.clker.com/cliparts/p/W/J/Z/6/O/bakery-hi.png" class = "dashboard-icons">
+ 	   		<h4> Items </h4>
+ 	   		<a class="waves-effect waves-light btn" href="/items/new" align="center"><i class="mdi-content-add"></i>Item </a>
+			</div>
+ 		<% end %>
+
+		<%= link_to(employees_path, class: 'button radius') do %>
+  			<div class="col s4 center">
+  			<img src="http://images.clipartpanda.com/chef-hat-clipart-black-and-white-chef_says_okay_black_white_line_art-999px.png" class = "dashboard-icons">
+    		<h4> Employees </h4>
+    		<a class="waves-effect waves-light btn" href="/users/new" align="center"><i class="mdi-content-add"></i> Employee</a>
+  			</div>
+		<% end %>
+
+ 		<%= link_to(customers_path, class: 'button radius') do %>
+  			<div class="col s4 center">
+  			<img src="http://images.clipartpanda.com/kid-eating-clipart-black-and-white-cg_boy-eating.gif" class = "dashboard-icons" align="center">
+    		<h4> Customers </h4>
+    		<a class="waves-effect waves-light btn" href="/customers/new" align="center"><i class="mdi-content-add"></i> Customer</a>
+  			</div>
+		<% end %>
+	</div>
+
+<% end %>
+
+</div>

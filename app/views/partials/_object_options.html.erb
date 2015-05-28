@@ -1,0 +1,18 @@
+<% if logged_in? %>
+  <% opt = "#{object.respond_to?(:name) ? object.name : model_name.capitalize }" %>
+
+  <div class="form-actions">
+    <%= link_to(eval("#{model_name.pluralize}_path"), class: 'button radius') do %>
+      <i class="mdi-action-list"></i>
+      &nbsp;Display All <%= model_name.pluralize.capitalize %>
+    <% end %>
+    &nbsp;&nbsp;
+    
+    <% if current_user.role?(:admin) %>
+      <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'button radius alert') do %>
+        <i class ="mdi-action-delete"></i>
+        &nbsp;<%= "Delete #{opt}" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

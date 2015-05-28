@@ -1,0 +1,50 @@
+<% if addresses.empty? %>
+  <p><em>There are no <%= state %> addresses at this time.</em></p>
+<% else %>
+<h2><%= state.capitalize %> Addresses</h2>
+<table class="striped">
+  <thead>
+    <tr>
+      <% unless current_user.role?(:customer) %>
+        <th>Customer</th>
+      <% end %>
+      <th>Recipient</th>
+      <th>Address</th>
+      <th>Billing?</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% addresses.each do |address| %>
+      <tr>
+        <% unless current_user.role?(:customer) %>
+          <td><%= link_to address.customer.proper_name, customer_path(address.customer) %></td>
+        <% end %>
+        <td><%= address.recipient %></td>
+        <td>
+          <%= render :partial => "partials/address_info", locals: {address: address} %>
+          <%= link_to(address_path(address), class: 'button tiny radius warning') do %>
+          <i class="mdi-content-forward"></i>
+         <% end %>
+        </td>
+        <td><%= address.is_billing ? "Yes" : "No" %></td>      
+        <td>
+          <%= link_to(edit_address_path(address), class: 'button tiny radius warning') do %>
+            &nbsp;Edit&nbsp;
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate addresses, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+<% end %>
+<p>&nbsp;</p>
+
+<% if current_user.role?(:customer) %>
+<div class="center">
+  <a class="waves-effect waves-light btn" href="/addresses/new" align="center">Add a New Address</a>
+</div>
+<% end %>
+
+</div>

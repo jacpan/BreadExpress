@@ -1,0 +1,11 @@
+<div class="form-actions">
+  <%= link_to(items_path, class: 'button radius') do %>
+    &nbsp;Display All Items
+  <% end %>
+  &nbsp;&nbsp;
+  
+  <%= link_to(item_path(@item), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{@item.name}"}, class: 'button radius alert') do %>
+    &nbsp;<%= "Delete #{@item.name}" %>
+  <% end %>
+
+</div>

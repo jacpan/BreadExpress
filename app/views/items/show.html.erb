@@ -1,0 +1,14 @@
+<% if logged_in? && current_user.role?(:admin) %>
+
+<%= render partial: "partials/show_structure", locals: {model_name: "item", 
+                                                         details: "item_details", 
+                                                         sidebar: "item_prices",
+                                                         buttons: "item_list_edit_destroy"} %>
+<% else %>
+
+<%= render partial: "partials/show_structure", locals: {model_name: "item", 
+                                                         details: "item_details", 
+                                                         sidebar: "similar_items",
+                                                         buttons: nil} %>
+
+<% end %>

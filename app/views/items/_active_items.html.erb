@@ -1,0 +1,29 @@
+<% if @active_items.empty? %>
+  <h4>No active items at this time.</h4>
+<% else %>
+<br/>
+<div class="row">
+<% @active_items.each do |item| %>
+  <div class="col s4">
+    <div class="card card-set-size">
+      <div class="card-image">
+        <%= render partial: "item_image", locals: {item: item} %>
+      </div>
+      <div class="card-content">
+        <p><b>Name: <%= link_to item.name, item_path(item) %></b></p>
+        <p>Price: <%= number_to_currency(item.item_prices.current.map(&:price).first) %></p>
+        <p>Units: <%= item.units_per_item %> <% if item.category == "bread" %> loaf <% else %> <%= item.category %> <% end %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%= will_paginate @active_items, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+<% end %>
+<p>&nbsp;</p>
+
+&nbsp;
+<div class="center">
+  <a class="waves-effect waves-light btn" href="/addresses/new" align="center">Add a New Address</a>
+</div>

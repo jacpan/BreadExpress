@@ -1,0 +1,22 @@
+<div class="container">
+  </br>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#active"><% if model_name=="item" %>Available<% elsif model_name=="order" %>Pending <% else %> Active<% end %> <%= model_name.capitalize %>s</a></li>
+          <li class="tab col s3"><a href="#inactive"><% if model_name=="order" %> All <%= model_name.capitalize %>s<% else %> Inactive <%= model_name.capitalize %>s<% end %></a></li>
+        </ul>
+      </div>
+      <div id="active" class="col s12">
+        <%= render partial: "#{primary}" %>
+      </div>
+      <div id="inactive" class="col s12">
+        <% if !secondary.nil? %>
+          <p>&nbsp;</p>
+          <%= render partial: "#{secondary}" %>
+        <% else %>
+          <p> There are no inactive items. </p>
+        <% end %>
+      </div>
+    </div>
+</div>

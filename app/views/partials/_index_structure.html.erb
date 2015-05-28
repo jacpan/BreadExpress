@@ -1,0 +1,21 @@
+<div class="container">
+  </br>
+    <div class="row">
+      <div class="col s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#bread">Bread</a></li>
+          <li class="tab col s3"><a href="#muffins">Muffins</a></li>
+          <li class="tab col s3"><a href="#pastries">Pastries</a></li>
+        </ul>
+      </div>
+      <div id="bread"class="col s12">
+        <%= render partial: "#{items}", locals: {type: "bread"} %>
+      </div>
+      <div id="muffins" class="col s12">
+        <%= render partial: "#{items}", locals: {type: "muffins"} %>
+      </div>
+      <div id="pastries" class="col s12">
+        <%= render partial: "#{items}", locals: {type: "pastries"} %>
+      </div>
+    </div>
+</div>

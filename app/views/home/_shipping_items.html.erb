@@ -1,0 +1,18 @@
+<table class="striped">
+    <thead>
+      <tr>
+        <th> Order Date</th>
+        <th> Items </th>
+        <th> Check when done</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @unshipped_items.each do |ui| %>
+        <tr>
+          <td><%= ui.date.strftime("%m/%d/%y") %></td>
+          <td><% ui.items.each do |item| %><br/> <%= item.name %> <% end %></td>
+          <td><%= link_to raw("<i class='mdi-maps-local-shipping'></i>  Ship today"), item_shipped_path(ui) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

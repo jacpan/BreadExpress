@@ -1,0 +1,68 @@
+<div class="contain-to-grid ">
+  <nav class = "indigo darken-2">
+      <ul class="left">
+        <!-- link to home -->
+        <li><%= link_to "Home", home_path %></li>
+        <% if !logged_in? %>
+          <li><%= link_to "View Items", items_path %></li>
+        <% end %>
+
+        <% if logged_in? && (current_user.role?(:customer)) %>
+          <li><%= link_to "View Items", items_path %></li>
+          <li><%= link_to "My Orders", orders_path %></li>
+          <li><%= link_to "My Addresses", addresses_path %></li>
+        <% end %>
+
+        <% if logged_in? && (current_user.role?(:admin)) %>
+          <!-- options for items -->
+          <li class="dropdown-button" data-activates="dropdown">
+            <%= link_to "Items", items_path %><i class="mdi-navigation-expand-more"></i>
+            <ul id="dropdown" class="dropdown-content">
+              <li><%= link_to "All Items", items_path %></li>
+              <li><%= link_to "New Item", new_item_path %></li>
+            </ul>
+          </li>
+          <!-- options for orders -->
+          <li class="dropdown-button" data-activates="dropdown1">
+            <%= link_to "Orders", orders_path %><i class="mdi-navigation-expand-more"></i>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><%= link_to "All Orders", orders_path %></li>
+              <li><%= link_to "New Order", new_order_path %></li>
+            </ul>
+          </li>
+          <!-- options for addresses -->
+          <li class="dropdown-button" data-activates="dropdown2">
+            <%= link_to "Addresses", addresses_path %><i class="mdi-navigation-expand-more"></i>
+            <ul id="dropdown2" class="dropdown-content">
+              <li><%= link_to "All Addresses", addresses_path, class: "dropdown-button" %></li>
+              <li><%= link_to "New Address", new_address_path %></li>
+            </ul>
+          </li>
+          <!-- options for users -->
+          <li class="dropdown-button" data-activates="dropdown3">
+            <%= link_to "Users", addresses_path %><i class="mdi-navigation-expand-more"></i>
+            <ul id="dropdown3" class="dropdown-content">
+              <li><%= link_to "Customers", customers_path %></li>
+              <li><%= link_to "Employees", employees_path %></li>
+              <li><%= link_to "New User", new_user_path %></li>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+        <!-- ADMIN ONLY OPTIONS -->
+      <ul class="right">
+        <% if !logged_in? %>
+          <li> Welcome, Guest </li>
+          <li><%= link_to "Login", login_path %></li>
+        <% elsif !current_user.role?(:customer) %>
+          <li><%= link_to "Welcome, #{current_user.username}", user_path(current_user) %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Welcome, #{current_user.customer.first_name}", customer_path(current_user.customer) %></li>
+          <li><%= link_to 'Cart', cart_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+        <% end %>
+      </ul>
+
+  </nav>
+</div>

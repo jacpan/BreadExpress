@@ -1,0 +1,16 @@
+<% if !@inactive_customers.empty? && logged_in? %>
+  <div class="panel clearfix">
+    <h3>Inactive Customers</h3>
+    <ul>
+      <% @inactive_customers.each do |customer| %>
+        <li><%= link_to customer.name, customer_path(customer) %></li>
+      <% end %>
+    </ul>
+  </div>
+ <% else %>
+ 	<p> There are no inactive customers </p>
+<% end %>
+&nbsp;
+<div class="center">
+	<a class="waves-effect waves-light btn" href="/customers/new" align="center">Add a New Customer</a>
+</div>

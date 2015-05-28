@@ -1,0 +1,8 @@
+<div class="container">
+  <h4>To be shipped...</h4>
+  <% if @unshipped_items.nil? || @unshipped_items.empty? %>
+  	<p> There are no items to be shipped today! <i class ="mdi-image-tag-faces"></i></p>
+  <% else %>
+  <%= render partial: "shipping_items" %>
+  <% end %>
+</div>

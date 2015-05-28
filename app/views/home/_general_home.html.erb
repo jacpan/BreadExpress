@@ -1,0 +1,79 @@
+<br/>
+<div class = "container">
+<div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="http://i.huffpost.com/gen/1387950/images/o-BREAD-facebook.jpg">
+        <div class="caption center-align">
+          <h3 class="index-title">Have you been craving bread?</h3>
+          <h5 class="light grey-text text-lighten-3 index-title">You've come to the right place!</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://www.johnthebodyman.com/wp-content/uploads/2014/06/Bodyman-bread-and-rolls-in-wicker-basket.jpg">
+        <div class="caption left-align">
+          <h3 class="index-title">We offer a huge selection of breads and pastries</h3>
+          <h5 class="index-title light grey-text text-lighten-3">Click on the items tab above to view them.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://charliesmuffins.yolasite.com/resources/choco%20muffins.jpg"> 
+        <div class="caption right-align">
+          <h3 class="index-title">Muffins Galore!</h3>
+          <h5 class="index-title light grey-text text-lighten-3">Blueberry, Chocolate, Banana Nut.... </h5>
+        </div>
+      </li>
+      <li>
+        <img src="http://www.collinstreetbakeshops.com/Breads_Assorted_0564.jpg"> 
+        <div class="caption center-align">
+          <h3 class="index-title">Place an order today!</h3>
+        </div>
+      </li>
+    </ul>
+  </div>
+      
+<h3 class = "main-title" align="center">Welcome To A&amp;M Bread Express</h3>
+<br />
+
+
+<div class="row">
+	<div class="s7 col">
+		<p class="flow-text">
+			Have you been craving bread or pastries? Well lucky for you, you've come to the right place! Check out our huge selection of breads, muffins, and pastries and place your order today! A world of delicious goodness awaits you with just a click of a button away.
+		</p>
+	</div>
+	<div class="s1 col">
+		&nbsp;
+	</div>
+	<div class="s4 col">
+		<div class="panel clearfix">
+			<p class="flow-text">
+				If you are a registered user, 
+			  <%= link_to "click here to login", login_path %>. If you want 
+			  to create an account with us, <%= link_to "please click to register", signup_path %>.
+			</p>
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="container">
+ <ul class="collapsible" data-collapsible="accordion">
+    <li>
+      <div class="collapsible-header"><i class="mdi-action-face-unlock"></i>Who are we?</div>
+      <div class="collapsible-body"><p class="flow-text">Alex and Mark are the co-founders of bread express. Ever since they were little boys they have had a fond interest in creating carb-y goodness for their friends and families. As they grew older they realized they could turn this obsession into a business and have thus created Bread Express.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-maps-place"></i>Where are we located?</div>
+      <div class="collapsible-body"><p class="flow-text">Our main office is located at Carnegie Mellon Unversity but we offer bread deliveries all around Pittsburgh. Currently we remain within local reach because we have not gotten the resources and man power to extend farther. In our future, we hope to reach out to the rest of Pittsburgh and potentially, the rest of America.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-social-cake"></i>Events</div>
+      <div class="collapsible-body"><p class="flow-text">Bread Express would love to cater your next event! Simply <%= link_to "contact us", contact_path %> with your date and estimated number of guests and we will do our best to serve you.</p></div>
+    </li>
+    <li>
+      <div class="collapsible-header"><i class="mdi-hardware-keyboard-alt"></i>Our Products</div>
+      <div class="collapsible-body"><p class="flow-text">Check out the assortment of goods we have available on our <%= link_to "items page", items_path %>.</p></div>
+    </li>
+  </ul>
+</div>

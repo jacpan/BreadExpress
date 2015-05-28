@@ -1,0 +1,28 @@
+</br><fieldset>
+<h5>Price History</h5>
+<table class="striped">
+  <thead>
+    <tr>
+      <th>Start Date</th>
+      <th>Price</th>
+      <th>&nbsp;&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @item_prices.each do |price| %>
+      <tr>
+        <td>
+					<%= price.start_date.strftime("%m/%d/%y") %> 
+          <% if price.end_date.nil? %>
+          <i>(current price)</i>
+          <% end %>
+				</td>
+        <td>
+          <%= number_to_currency price.price %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= render :partial => "item_price_form" %>
+</fieldset>

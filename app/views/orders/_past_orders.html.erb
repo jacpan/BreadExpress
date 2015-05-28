@@ -1,0 +1,10 @@
+<% if @all_orders.empty? %>
+  &nbsp;
+<% else %>
+  <%= render :partial => "order_list", locals: {status: 'All', orders: @all_orders} %>  
+<% end %>
+<br />
+&nbsp;
+<div class="center">
+	<a class="waves-effect waves-light btn" href="/orders/new" align="center">Add a New Order</a>
+</div>

@@ -1,0 +1,25 @@
+<div class = "container"> 
+<h3>Log In</h3>
+<div class="row">
+  <div class="s7 col">
+     <%= form_tag sessions_path do %>
+      <div class="control-group">
+        <%= label_tag :username %>
+        <div class="controls">
+          <%= text_field_tag :username, params[:username] %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= label_tag :password %>
+        <div class="controls">
+          <%= password_field_tag :password %>
+        </div>
+      </div>
+      
+      <div class="actions"><%= submit_tag "Log In" %></div>
+      <%= link_to "Don't have an account?", signup_path %>
+    <% end %>
+  </div>
+</div>
+</div>

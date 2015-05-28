@@ -1,0 +1,9 @@
+<%= simple_form_for @item_price, html: { class: 'form-horizontal' } do |f| %>
+    <%= f.input :price, input_html: {class: "avg"} %>
+    <%= f.input :item_id, as: :hidden, input_html: {value: @item.id} %>
+    
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button radius' %>
+    </div>
+<% end %>

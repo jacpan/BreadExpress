@@ -1,0 +1,29 @@
+<div class = "container">
+	<h5 align="center"> Employees </h5>
+	<table class= "striped">
+		<thead>
+			<th> Username </th>
+			<th> Role </th>
+			<th> Active </th>
+			<th> Remove </th>
+		<thead>
+	
+		<tbody>
+			<% @employees.each do |employee| %>
+			<td> <%= employee.username %> </td>
+			<td> <%= employee.role %> </td>
+			<td> <%= employee.active %> </td>
+			<td>
+			<%= link_to(user_path(employee), method: 'delete', data: {confirm: "Are you sure you want to make #{employee.username} inactive?"}, class: 'button radius alert') do %>
+		    &nbsp;<%= "Make inactive" %>
+		  	<% end %>
+		  </td>
+		</tbody>
+		<% end %>
+	</table>
+	&nbsp;
+<div class="center">
+	<a class="waves-effect waves-light btn" href="/users/new" align="center">Add a New Employee</a>
+</div>
+	
+</div>

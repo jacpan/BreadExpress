@@ -1,0 +1,34 @@
+
+<%= simple_form_for @order, html: { class: 'form-horizontal' } do |f| %>
+  <fieldset>
+    <legend><%= controller.action_name.capitalize %> Order</legend>
+
+    <% if current_user.role?(:admin) %>
+      <%= f.input :customer_id, collection: Customer.active.alphabetical, include_blank: true, input_html: {class: "avg"} %>
+    <% else %>
+      <%= f.input :customer_id, as: :hidden, input_html: { value: current_user.customer.id } %>
+    <% end %>
+
+    <div class="container">
+      <%= f.association :address, collection: get_address_options(current_user), label: "Recipient" %>
+
+      <%= f.input :grand_total, as: :hidden, input_html: { value: @total_cost} %>
+
+      <% if current_user.role?(:admin) %>
+        <%= f.label "Date to ship" %>
+        <input type="date" class="datepicker">
+        <br/>
+      <% else %>
+        <%= f.input :date, as: :hidden, input_html: { value: Date.today } %>
+      <% end %>
+      
+      <%= f.input :credit_card_number %>
+      <%= f.input :expiration_month, label: "Expiration Month (Please put numeric value of month-- ie January 1 February 2)" %>
+      <%= f.input :expiration_year %>
+     
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'button radius' %>
+      <%= link_to 'Cancel', cart_path, :class => 'button alert radius' %>
+    </div>
+  </fieldset>
+<% end %>
